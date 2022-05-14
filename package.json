@@ -1,0 +1,38 @@
+{
+    "name": "webpack-startup2",
+    "version": "1.0.0",
+    "description": "wabpack",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack",
+        "start": "webpack serve"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/anik-hossain/webpack-startup.git"
+    },
+    "keywords": [
+        "webpack"
+    ],
+    "author": "Anik Hossain",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/anik-hossain/webpack-startup/issues"
+    },
+    "homepage": "https://github.com/anik-hossain/webpack-startup#readme",
+    "devDependencies": {
+        "@babel/core": "^7.17.10",
+        "@babel/plugin-proposal-class-properties": "^7.16.7",
+        "@babel/preset-env": "^7.17.10",
+        "babel-loader": "^8.2.5",
+        "css-loader": "^6.7.1",
+        "html-loader": "^3.1.0",
+        "html-webpack-plugin": "^5.5.0",
+        "mini-css-extract-plugin": "^2.6.0",
+        "sass": "^1.51.0",
+        "sass-loader": "^12.6.0",
+        "webpack": "^5.72.1",
+        "webpack-cli": "^4.9.2",
+        "webpack-dev-server": "^4.9.0"
+    }
+}
