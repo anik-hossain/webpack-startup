@@ -1,8 +1,5 @@
 import { a, b } from './test';
 
-import '../styles/index.scss';
-import '../styles/index.css';
-
 function func(a, b) {
     console.log(a + b);
 }
