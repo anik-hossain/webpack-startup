@@ -5,9 +5,9 @@ const webpackRemoveEmptyScripts = require('webpack-remove-empty-scripts');
 
 const config = {
     mode: 'development',
-    // entry: path.resolve(__dirname, 'src/scripts/index.js'),
+    entry: path.resolve(__dirname, './src/js/noScript.js'),
     // output: {
-    //     path: path.resolve(__dirname, 'dist/js'),
+    //     path: path.resolve(__dirname, 'dist/noscript'),
     //     filename: 'app.js',
     //     clean: true,
     // },
@@ -15,19 +15,34 @@ const config = {
 
 const jsConfig = Object.assign({}, config, {
     entry: {
-        bundle: path.resolve(__dirname, 'src/scripts/index.js'),
-        app: path.resolve(__dirname, 'src/scripts/test2.js'),
+        bundle: './src/scripts/index.js',
+        app: './src/scripts/test2.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist/js'),
         filename: '[name].[contenthash].js',
         clean: true,
     },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                    },
+                },
+            },
+        ],
+    },
 });
 
 const htmlConfig = Object.assign({}, config, {
     // output: {
-    //     path: path.resolve(__dirname, 'dist/css'),
+    //     path: path.resolve(__dirname, 'dist'),
+    //     filename: '[name].html',
     //     clean: true,
     // },
     module: {
@@ -81,43 +96,3 @@ const cssConfig = Object.assign({}, config, {
 });
 
 module.exports = [cssConfig, htmlConfig, jsConfig];
-
-// module.exports = {
-
-//     entry: {
-//         app: path.resolve(__dirname, 'src/scripts/index.js'),
-//         test: path.resolve(__dirname, 'src/scripts/test2.js'),
-//     },
-//     output: {
-//         path: path.resolve(__dirname, 'dist/js'),
-//     },
-//     module: {
-//         rules: [
-//             // {
-//             //     test: /\.(scss|css)$/,
-//             //     use: {
-//             //         loader: [
-//             //             MiniCssExtractPlugin.loader,
-//             //             'css-loader',
-//             //             'sass-loader',
-//             //         ],
-//             //         options: {},
-//             //     },
-//             // },
-//             {
-//                 test: /\.html$/,
-//                 use: 'html-loader',
-//             },
-//         ],
-//     },
-//     plugins: [
-//         // new MiniCssExtractPlugin({
-//         //     filename: '[name].css',
-//         //     chunkFilename: '[id].css',
-//         // }),
-//         new htmlWebpackPlugin({
-//             template: './src/about.html',
-//             filename: 'about.html',
-//         }),
-//     ],
-// };
